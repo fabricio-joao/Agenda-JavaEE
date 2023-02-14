@@ -26,12 +26,12 @@ public class Conexao {
 				System.out.println("nao conexao");
 			}
 		}
-		
+
 		return conexao;
 	}
 
 	public static void fecharConexao() {
-		if(conexao != null) {
+		if (conexao != null) {
 			try {
 				conexao.close();
 			} catch (SQLException e) {
@@ -41,7 +41,7 @@ public class Conexao {
 	}
 
 	public static void fecharConexaoStatement(Statement st) {
-		if(st != null) {
+		if (st != null) {
 			try {
 				st.close();
 			} catch (SQLException e) {
@@ -51,12 +51,12 @@ public class Conexao {
 	}
 
 	public static void fecharConexaoResultSet(ResultSet rs) {
-			if(rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
+	}
 }
