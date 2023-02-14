@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.agenda.modelo.dao.AgendaDAO;
 import com.agenda.modelo.dao.FabricaDAO;
 
-
 @WebServlet("/agendacontrole")
 public class AgendaControle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
