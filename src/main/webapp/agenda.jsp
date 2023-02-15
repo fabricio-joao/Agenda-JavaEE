@@ -19,6 +19,7 @@ List<Agenda> lista = (List<Agenda>) request.getAttribute("contatos");
 <body>
 	<h1>Novo Contato</h1>
 	<a href="novocontato.html" class="Botao1">Criar Novo Contato</a>
+	<a href="reportar" class="Botao2">Relatorio</a>
 	<table id="tabela">
 		<thead>
 			<tr>
