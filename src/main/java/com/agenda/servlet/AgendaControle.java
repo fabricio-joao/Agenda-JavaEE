@@ -14,7 +14,7 @@ import com.agenda.modelo.Agenda;
 import com.agenda.modelo.dao.AgendaDAO;
 import com.agenda.modelo.dao.FabricaDAO;
 
-@WebServlet(urlPatterns = {"/agendacontrole", "/agenda", "/inserir"})
+@WebServlet(urlPatterns = {"/agendacontrole", "/agenda", "/inserir", "/select", "/atualizar"})
 public class AgendaControle extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -40,6 +40,10 @@ public class AgendaControle extends HttpServlet {
 			listarContatos(request, response);
 		} else if(url.equals("/inserir")) {
 			inserirContatos(request, response);
+		} else if(url.equals("/select")) {
+			exibirContatos(request, response);
+		} else if(url.equals("/atualizar")) {
+			atualizarContatos(request, response);
 		}
 	}
 	
@@ -71,16 +75,54 @@ public class AgendaControle extends HttpServlet {
 		   System.out.println(fone);
 		   System.out.println(email);
 		   
-		   contatos.setNome(nome);
+		   /*contatos.setNome(nome);
 		   contatos.setFone(fone);
-		   contatos.setEmail(email);
+		   contatos.setEmail(email);*/
 			
 		   dao.inserir(contatos);
 		   
 		   response.sendRedirect("agenda");
-		//request.setAttribute("contatos", listaContatos);
-		
-		//RequestDispatcher rd = request.getRequestDispatcher("agenda.jsp");
-		//rd.forward(request, response);	
 		}
+        
+        protected void exibirContatos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		
+ 		   String idcon = request.getParameter("idcon");
+ 		 
+ 		   System.out.println(idcon);
+ 		   
+ 		   contatos.setIdcon(idcon);
+ 			
+ 		   dao.mostarContato(contatos);
+ 		   
+ 		   System.out.println(contatos.getIdcon());
+ 		   System.out.println(contatos.getNome());
+ 		   System.out.println(contatos.getFone());
+ 		   System.out.println(contatos.getEmail());
+ 		 
+ 		   request.setAttribute("idcon", contatos.getIdcon());
+ 		   request.setAttribute("nome", contatos.getNome());
+ 		   request.setAttribute("fone", contatos.getFone());
+ 		   request.setAttribute("email", contatos.getEmail());
+ 		   
+ 		   RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
+ 		   rd.forward(request, response);	
+ 		}
+        
+        protected void atualizarContatos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		
+  		   String idcon = request.getParameter("idcon");
+  		   String nome = request.getParameter("nome");
+  		   String fone = request.getParameter("fone");
+  		   String email = request.getParameter("email");
+  		   
+  		   contatos.setIdcon(idcon);
+  		   contatos.setNome(nome);
+  		   contatos.setFone(fone);
+  		   contatos.setEmail(email);
+  			
+  		   dao.editar(contatos);
+ 
+  		   
+  		   response.sendRedirect("agenda");	
+  		}
 	}

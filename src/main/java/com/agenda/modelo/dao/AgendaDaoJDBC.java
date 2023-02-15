@@ -90,7 +90,7 @@ public class AgendaDaoJDBC implements AgendaDAO {
 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String exibir = "SELECT * FROM contatos WHERE id=?";
+		String exibir = "SELECT * FROM contatos WHERE idcon=?";
 		try {
 			ps = conexao.prepareStatement(exibir);
 			ps.setString(1, contato.getIdcon());
