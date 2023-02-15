@@ -14,7 +14,7 @@ import com.agenda.modelo.Agenda;
 import com.agenda.modelo.dao.AgendaDAO;
 import com.agenda.modelo.dao.FabricaDAO;
 
-@WebServlet(urlPatterns = {"/agendacontrole", "/agenda", "/inserir", "/select", "/atualizar", "/delete"})
+@WebServlet(urlPatterns = {"/agendacontrole", "/agenda", "/inserir", "/selecionar", "/atualizar", "/delete"})
 public class AgendaControle extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class AgendaControle extends HttpServlet {
 			listarContatos(request, response);
 		} else if(url.equals("/inserir")) {
 			inserirContatos(request, response);
-		} else if(url.equals("/select")) {
+		} else if(url.equals("/selecionar")) {
 			exibirContatos(request, response);
 		} else if(url.equals("/atualizar")) {
 			atualizarContatos(request, response);
