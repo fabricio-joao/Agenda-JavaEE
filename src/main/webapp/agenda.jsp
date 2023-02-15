@@ -35,6 +35,7 @@
        <td><%=a.getFone()%></td>
        <td><%=a.getEmail()%></td>
        <td><a href="select?idcon=<%=a.getIdcon()%>" class="Botao1">Editar</a></td>
+       <td><a href="delete?idcon=<%=a.getIdcon()%>" class="Botao1">Deletar</a></td>
     </tr>
     <%}%>
 </tbody>

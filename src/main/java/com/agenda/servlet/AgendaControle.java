@@ -14,7 +14,7 @@ import com.agenda.modelo.Agenda;
 import com.agenda.modelo.dao.AgendaDAO;
 import com.agenda.modelo.dao.FabricaDAO;
 
-@WebServlet(urlPatterns = {"/agendacontrole", "/agenda", "/inserir", "/select", "/atualizar"})
+@WebServlet(urlPatterns = {"/agendacontrole", "/agenda", "/inserir", "/select", "/atualizar", "/delete"})
 public class AgendaControle extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -44,6 +44,8 @@ public class AgendaControle extends HttpServlet {
 			exibirContatos(request, response);
 		} else if(url.equals("/atualizar")) {
 			atualizarContatos(request, response);
+		} else if(url.equals("/delete")) {
+			deletarContatos(request, response);
 		}
 	}
 	
@@ -122,7 +124,23 @@ public class AgendaControle extends HttpServlet {
   			
   		   dao.editar(contatos);
  
-  		   
   		   response.sendRedirect("agenda");	
   		}
+        
+        protected void deletarContatos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		
+   		   String idcon = request.getParameter("idcon");
+   		   /*String nome = request.getParameter("nome");
+   		   String fone = request.getParameter("fone");
+   		   String email = request.getParameter("email");*/
+   		   
+   		   contatos.setIdcon(idcon);
+   		   /*contatos.setNome(nome);
+   		   contatos.setFone(fone);
+   		   contatos.setEmail(email);*/
+   			
+   		   dao.deletar(contatos);
+  
+   		   response.sendRedirect("agenda");	
+   		}
 	}

@@ -41,7 +41,7 @@ public class AgendaDaoJDBC implements AgendaDAO {
 	public void deletar(Agenda contato) {
 
 		PreparedStatement ps = null;
-		String deletar = "DELETE FROM contatos WHERE id=?";
+		String deletar = "DELETE FROM contatos WHERE idcon=?";
 		try {
 			ps = conexao.prepareStatement(deletar);
 			ps.setString(1, contato.getIdcon());
